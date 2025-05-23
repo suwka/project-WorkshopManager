@@ -1,0 +1,28 @@
+﻿@{
+    ViewData["Title"] = "Start";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<form method="post" asp-action="Video">
+    <button type="submit">Kliknij mnie!</button>
+</form>
+
+@if (ViewBag.ShowVideo == true)
+{
+    <div style="text-align: center;">
+        <video width="960" controls autoplay>
+            <source src="/videos/ronaldo.mp4" type="video/mp4">
+            Twoja przeglądarka nie obsługuje wideo.
+        </video>
+    </div>
+}
+
+@if (ViewBag.Message != null)
+{
+    <div style="text-align: center;">
+        <h1 style="font-size: 48px; font-weight: bold;">
+            @ViewBag.Message
+        </h1>
+    </div>
+}
