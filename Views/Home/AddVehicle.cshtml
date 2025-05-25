@@ -1,0 +1,38 @@
+@{
+    ViewData["Title"] = "Dodaj pojazd";
+    var currentYear = 2025;
+    var startYear = 1900;
+}
+
+<h1>Dodaj pojazd</h1>
+
+<form method="post">
+    <div>
+        <label for="marka">Marka:</label>
+        <input type="text" id="marka" name="marka" required />
+    </div>
+    <div>
+        <label for="model">Model pojazdu:</label>
+        <input type="text" id="model" name="model" required />
+    </div>
+    <div>
+        <label for="rokProdukcji">Rok produkcji:</label>
+        <select id="rokProdukcji" name="rokProdukcji" required>
+            <option value="">Wybierz rok</option>
+            @for (int rok = currentYear; rok >= startYear; rok--)
+            {
+                <option value="@rok">@rok</option>
+            }
+        </select>
+    </div>
+    <div>
+        <label for="coNaprawic">Co do naprawienia:</label>
+        <input type="text" id="coNaprawic" name="coNaprawic" required />
+    </div>
+    <div>
+        <label for="opisNaprawy">Opis do naprawienia:</label>
+        <textarea id="opisNaprawy" name="opisNaprawy" required></textarea>
+    </div>
+    <button type="submit">Wyślij</button>
+</form>
+

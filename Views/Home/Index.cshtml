@@ -8,6 +8,9 @@
     <button type="submit">Kliknij mnie!</button>
 </form>
 
+<a class="btn btn-primary" href="@Url.Action("AddVehicle", "Home")">Dodaj pojazd</a>
+<a class="btn btn-secondary" href="@Url.Action("VehicleList", "Home")">Lista pojazdów</a>
+
 @if (ViewBag.ShowVideo == true)
 {
     <div style="text-align: center;">

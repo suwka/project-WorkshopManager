@@ -10,7 +10,6 @@
       <Folder Include="Data\" />
       <Folder Include="DTOs\" />
       <Folder Include="Mappers\" />
-      <Folder Include="Migrations\" />
       <Folder Include="Pages\" />
       <Folder Include="Services\" />
       <Folder Include="wwwroot\uploads\" />

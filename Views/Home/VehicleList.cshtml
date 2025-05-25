@@ -1,0 +1,64 @@
+@model List<WorkshopManager.Models.Vehicle>
+@{
+    ViewData["Title"] = "Lista pojazdów";
+}
+
+<h1>Lista pojazdów</h1>
+
+<style>
+    .vehicle-table {
+        width: 90%;
+        margin: 30px auto;
+        border-collapse: separate;
+        border-spacing: 0;
+        background: #fff;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        font-size: 1.1em;
+    }
+    .vehicle-table th, .vehicle-table td {
+        padding: 16px 20px;
+        text-align: left;
+    }
+    .vehicle-table th {
+        background: #007bff;
+        color: #fff;
+        font-weight: 600;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+    }
+    .vehicle-table tr:nth-child(even) {
+        background: #f6f8fa;
+    }
+    .vehicle-table tr:hover {
+        background: #e2e6ea;
+        transition: background 0.2s;
+    }
+    .vehicle-table td {
+        border-bottom: 1px solid #e0e0e0;
+    }
+</style>
+
+<table class="vehicle-table">
+    <thead>
+        <tr>
+            <th>Marka</th>
+            <th>Model</th>
+            <th>Rok produkcji</th>
+            <th>Co do naprawienia</th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var vehicle in Model)
+    {
+        <tr>
+            <td>@vehicle.Marka</td>
+            <td>@vehicle.Model</td>
+            <td>@vehicle.RokProdukcji</td>
+            <td>@vehicle.CoNaprawic</td>
+        </tr>
+    }
+    </tbody>
+</table>
+
+<a href="/Home/AddVehicle">Dodaj nowy pojazd</a>
+
