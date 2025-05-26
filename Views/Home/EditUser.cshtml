@@ -1,0 +1,44 @@
+@model WorkshopManager.Models.User
+@{
+    ViewData["Title"] = "Edytuj użytkownika";
+    var roleList = new List<string> { "Admin", "User", "Mechanik" };
+}
+<h1>Edytuj użytkownika</h1>
+<form method="post">
+    <input type="hidden" name="id" value="@Model.Id" />
+    <div class="mb-3">
+        <label>Imię</label>
+        <input class="form-control" name="firstName" value="@Model.FirstName" required />
+    </div>
+    <div class="mb-3">
+        <label>Nazwisko</label>
+        <input class="form-control" name="lastName" value="@Model.LastName" required />
+    </div>
+    <div class="mb-3">
+        <label>Email</label>
+        <input class="form-control" name="email" value="@Model.Email" required />
+    </div>
+    <div class="mb-3">
+        <label>Nowe hasło (pozostaw puste, aby nie zmieniać)</label>
+        <input class="form-control" name="password" type="password" />
+    </div>
+    <div class="mb-3">
+        <label>Rola</label>
+        <select class="form-control" name="role">
+            @foreach (var role in roleList)
+            {
+                if (Model.Role == role)
+                {
+                    <option value="@role" selected>@role</option>
+                }
+                else
+                {
+                    <option value="@role">@role</option>
+                }
+            }
+        </select>
+    </div>
+    <button class="btn btn-success" type="submit">Zapisz</button>
+    <a class="btn btn-secondary" href="@Url.Action("UserList", "Home")">Anuluj</a>
+</form>
+

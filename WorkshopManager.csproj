@@ -10,13 +10,13 @@
       <Folder Include="Data\" />
       <Folder Include="DTOs\" />
       <Folder Include="Mappers\" />
-      <Folder Include="Migrations\" />
       <Folder Include="Pages\" />
       <Folder Include="Services\" />
       <Folder Include="wwwroot\uploads\" />
     </ItemGroup>
 
     <ItemGroup>
+      <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
       <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.5" />
       <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.5">
         <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>

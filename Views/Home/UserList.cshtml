@@ -1,0 +1,32 @@
+@model List<WorkshopManager.Models.User>
+@{
+    ViewData["Title"] = "Lista użytkowników";
+}
+<h1>Lista użytkowników</h1>
+<a class="btn btn-primary" href="@Url.Action("AddUser", "Home")">Dodaj użytkownika</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Imię</th>
+            <th>Nazwisko</th>
+            <th>Email</th>
+            <th>Rola</th>
+            <th>Akcje</th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var user in Model)
+    {
+        <tr>
+            <td>@user.FirstName</td>
+            <td>@user.LastName</td>
+            <td>@user.Email</td>
+            <td>@user.Role</td>
+            <td>
+                <a class="btn btn-sm btn-warning" href="@Url.Action("EditUser", "Home", new { id = user.Id })">Edytuj</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
+

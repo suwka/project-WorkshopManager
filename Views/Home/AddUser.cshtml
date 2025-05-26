@@ -1,0 +1,35 @@
+@{
+    ViewData["Title"] = "Dodaj użytkownika";
+    var roleList = new List<string> { "Admin", "User", "Mechanik" };
+}
+<h1>Dodaj użytkownika</h1>
+<form method="post">
+    <div class="mb-3">
+        <label>Imię</label>
+        <input class="form-control" name="firstName" required />
+    </div>
+    <div class="mb-3">
+        <label>Nazwisko</label>
+        <input class="form-control" name="lastName" required />
+    </div>
+    <div class="mb-3">
+        <label>Email</label>
+        <input class="form-control" name="email" required />
+    </div>
+    <div class="mb-3">
+        <label>Hasło</label>
+        <input class="form-control" name="password" type="password" required />
+    </div>
+    <div class="mb-3">
+        <label>Rola</label>
+        <select class="form-control" name="role">
+            @foreach (var role in roleList)
+            {
+                <option value="@role">@role</option>
+            }
+        </select>
+    </div>
+    <button class="btn btn-success" type="submit">Dodaj</button>
+    <a class="btn btn-secondary" href="@Url.Action("UserList", "Home")">Anuluj</a>
+</form>
+
