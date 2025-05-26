@@ -7,6 +7,7 @@ namespace WorkshopManager.Models
         public string Model { get; set; }
         public int RokProdukcji { get; set; }
         public string CoNaprawic { get; set; }
+        public string UserEmail { get; set; } // email przypisanego użytkownika
     }
 }
 

@@ -1,4 +1,7 @@
-﻿@{
+﻿@using Microsoft.AspNetCore.Identity
+@using System.Security.Claims
+
+@{
     ViewData["Title"] = "Start";
 }
 
@@ -8,8 +11,17 @@
     <button type="submit">Kliknij mnie!</button>
 </form>
 
-<a class="btn btn-primary" href="@Url.Action("AddVehicle", "Home")">Dodaj pojazd</a>
-<a class="btn btn-secondary" href="@Url.Action("VehicleList", "Home")">Lista pojazdów</a>
+@if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+{
+    <a class="btn btn-primary" href="@Url.Action("AddVehicle", "Home")">Dodaj pojazd</a>
+    <a class="btn btn-secondary" href="@Url.Action("VehicleList", "Home")">Lista pojazdów</a>
+    <a class="btn btn-success" href="@Url.Action("AddUser", "Home")">Dodaj użytkownika</a>
+    <a class="btn btn-info" href="@Url.Action("UserList", "Home")">Zarządzaj użytkownikami</a>
+}
+else if (User.Identity.IsAuthenticated)
+{
+    <a class="btn btn-secondary" href="@Url.Action("MyVehicles", "Home")">Moje pojazdy</a>
+}
 
 @if (ViewBag.ShowVideo == true)
 {

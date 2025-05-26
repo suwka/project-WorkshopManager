@@ -1,4 +1,6 @@
 @model List<WorkshopManager.Models.Vehicle>
+@using Microsoft.AspNetCore.Identity
+@using System.Security.Claims
 @{
     ViewData["Title"] = "Lista pojazdów";
 }
@@ -38,27 +40,36 @@
     }
 </style>
 
-<table class="vehicle-table">
-    <thead>
-        <tr>
-            <th>Marka</th>
-            <th>Model</th>
-            <th>Rok produkcji</th>
-            <th>Co do naprawienia</th>
-        </tr>
-    </thead>
-    <tbody>
-    @foreach (var vehicle in Model)
-    {
-        <tr>
-            <td>@vehicle.Marka</td>
-            <td>@vehicle.Model</td>
-            <td>@vehicle.RokProdukcji</td>
-            <td>@vehicle.CoNaprawic</td>
-        </tr>
-    }
-    </tbody>
-</table>
-
-<a href="/Home/AddVehicle">Dodaj nowy pojazd</a>
-
+@if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+{
+    <a href="/Home/AddVehicle">Dodaj nowy pojazd</a>
+    <table class="vehicle-table">
+        <thead>
+            <tr>
+                <th>Marka</th>
+                <th>Model</th>
+                <th>Rok produkcji</th>
+                <th>Co do naprawienia</th>
+                <th>Email użytkownika</th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach (var vehicle in Model)
+        {
+            <tr onclick="window.location.href='@Url.Action("VehicleDetails", "Home", new { id = vehicle.Id })'" style="cursor:pointer;">
+                <td>@vehicle.Marka</td>
+                <td>@vehicle.Model</td>
+                <td>@vehicle.RokProdukcji</td>
+                <td>@vehicle.CoNaprawic</td>
+                <td>@vehicle.UserEmail</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}
+else
+{
+    <div class="alert alert-warning" role="alert">
+        Lista pojazdów dostępna tylko dla administratora.
+    </div>
+}

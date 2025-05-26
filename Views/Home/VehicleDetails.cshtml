@@ -1,0 +1,47 @@
+@model WorkshopManager.Models.Vehicle
+@{
+    ViewData["Title"] = "Szczegóły pojazdu";
+    var user = ViewBag.User as WorkshopManager.Models.User;
+}
+
+<h1>Szczegóły pojazdu</h1>
+
+<table class="table">
+    <tr>
+        <th>Marka</th>
+        <td>@Model.Marka</td>
+    </tr>
+    <tr>
+        <th>Model</th>
+        <td>@Model.Model</td>
+    </tr>
+    <tr>
+        <th>Rok produkcji</th>
+        <td>@Model.RokProdukcji</td>
+    </tr>
+    <tr>
+        <th>Co do naprawienia</th>
+        <td>@Model.CoNaprawic</td>
+    </tr>
+    <tr>
+        <th>Opis do naprawienia</th>
+        <td>@Model.CoNaprawic</td>
+    </tr>
+    <tr>
+        <th>Email użytkownika</th>
+        <td>@Model.UserEmail</td>
+    </tr>
+    @if(user != null)
+    {
+        <tr>
+            <th>Imię</th>
+            <td>@user.FirstName</td>
+        </tr>
+        <tr>
+            <th>Nazwisko</th>
+            <td>@user.LastName</td>
+        </tr>
+    }
+</table>
+<a href="@Url.Action("VehicleList", "Home")" class="btn btn-secondary">Powrót do listy</a>
+
